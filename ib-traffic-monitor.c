@@ -30,7 +30,7 @@
 #include "ncurses_utils.h"
 #include "utils.h"
 
-#define VERSION "1.4.1"
+#define VERSION "1.4.2"
 
 /* define usage function */
 static void usage(void) {
@@ -255,31 +255,31 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < ret_get_infiniband_metrics; ++i) {
             /* print interface status metrics */
             print_delimiter(main_window, 4 + i, interface_status_positions, SIZEOF(interface_status_positions));
-            mvwprintw(main_window, 4 + i, 1, "%-16s", cur_infiniband_metrics.infiniband[i].interface_name);
-            mvwprintw(main_window, 4 + i, 22, "%5ld", cur_infiniband_metrics.infiniband[i].lid);
-            mvwprintw(main_window, 4 + i, 34, "%10s", cur_infiniband_metrics.infiniband[i].link_layer);
-            mvwprintw(main_window, 4 + i, 47, "%15s", cur_infiniband_metrics.infiniband[i].state);
-            mvwprintw(main_window, 4 + i, 69, "%12s", cur_infiniband_metrics.infiniband[i].phys_state);
+            mvwprintw(main_window, 4 + i, 2, "%-14.14s", cur_infiniband_metrics.infiniband[i].interface_name);
+            mvwprintw(main_window, 4 + i, 22, "%4ld", cur_infiniband_metrics.infiniband[i].lid);
+            mvwprintw(main_window, 4 + i, 33, "%10.10s", cur_infiniband_metrics.infiniband[i].link_layer);
+            mvwprintw(main_window, 4 + i, 47, "%14.14s", cur_infiniband_metrics.infiniband[i].state);
+            mvwprintw(main_window, 4 + i, 69, "%11.11s", cur_infiniband_metrics.infiniband[i].phys_state);
             mvwprintw(main_window, 4 + i, 83, "%22s", cur_infiniband_metrics.infiniband[i].rate);
 
             /* print error metrics */
             print_delimiter(main_window, 2 * ret_get_infiniband_metrics + 14 + i, interface_error_positions, SIZEOF(interface_error_positions));
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 1, "%-16s", cur_infiniband_metrics.infiniband[i].interface_name);
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 19, "%7ld", cur_infiniband_metrics.infiniband[i].symbol_error);
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 28, "%7ld", cur_infiniband_metrics.infiniband[i].port_rcv_errors);
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 43, "%8ld", cur_infiniband_metrics.infiniband[i].port_rcv_remote_physical_errors);
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 61, "%8ld", cur_infiniband_metrics.infiniband[i].port_rcv_switch_relay_errors);
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 73, "%8ld", cur_infiniband_metrics.infiniband[i].port_rcv_constraint_errors);
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 85, "%8ld", cur_infiniband_metrics.infiniband[i].port_xmit_constraint_errors);
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 102, "%8ld", cur_infiniband_metrics.infiniband[i].excessive_buffer_overrun_errors);
-            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 115, "%8ld", cur_infiniband_metrics.infiniband[i].port_xmit_discards);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 2, "%-14.14s", cur_infiniband_metrics.infiniband[i].interface_name);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 19, "%6ld", cur_infiniband_metrics.infiniband[i].symbol_error);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 28, "%6ld", cur_infiniband_metrics.infiniband[i].port_rcv_errors);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 43, "%7ld", cur_infiniband_metrics.infiniband[i].port_rcv_remote_physical_errors);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 61, "%7ld", cur_infiniband_metrics.infiniband[i].port_rcv_switch_relay_errors);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 73, "%7ld", cur_infiniband_metrics.infiniband[i].port_rcv_constraint_errors);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 85, "%7ld", cur_infiniband_metrics.infiniband[i].port_xmit_constraint_errors);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 102, "%7ld", cur_infiniband_metrics.infiniband[i].excessive_buffer_overrun_errors);
+            mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 115, "%7ld", cur_infiniband_metrics.infiniband[i].port_xmit_discards);
             mvwprintw(main_window, 2 * ret_get_infiniband_metrics + 14 + i, 129, "%8ld", cur_infiniband_metrics.infiniband[i].VL15_dropped);
 
             /* print link error metrics */
             print_delimiter(main_window, 3 * ret_get_infiniband_metrics + 19 + i, interface_link_error_positions, SIZEOF(interface_link_error_positions));
-            mvwprintw(main_window, 3 * ret_get_infiniband_metrics + 19 + i, 1, "%-16s", cur_infiniband_metrics.infiniband[i].interface_name);
-            mvwprintw(main_window, 3 * ret_get_infiniband_metrics + 19 + i, 29, "%10ld", cur_infiniband_metrics.infiniband[i].link_error_recovery);
-            mvwprintw(main_window, 3 * ret_get_infiniband_metrics + 19 + i, 52, "%10ld", cur_infiniband_metrics.infiniband[i].local_link_integrity_errors);
+            mvwprintw(main_window, 3 * ret_get_infiniband_metrics + 19 + i, 2, "%-14.14s", cur_infiniband_metrics.infiniband[i].interface_name);
+            mvwprintw(main_window, 3 * ret_get_infiniband_metrics + 19 + i, 29, "%9ld", cur_infiniband_metrics.infiniband[i].link_error_recovery);
+            mvwprintw(main_window, 3 * ret_get_infiniband_metrics + 19 + i, 52, "%9ld", cur_infiniband_metrics.infiniband[i].local_link_integrity_errors);
             mvwprintw(main_window, 3 * ret_get_infiniband_metrics + 19 + i, 67, "%8ld", cur_infiniband_metrics.infiniband[i].link_downed);
         }
 
@@ -293,14 +293,14 @@ int main(int argc, char *argv[]) {
 
                         /* print IO metrics */
                         print_delimiter(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, interface_io_positions, SIZEOF(interface_io_positions));
-                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 1, "%-16s", cur_infiniband_metrics.infiniband[i].interface_name);
-                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 21, "%10ld", (cur_infiniband_metrics.infiniband[i].port_rcv_packets - prev_infiniband_metrics.infiniband[j].port_rcv_packets) / refresh_second);
-                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 33, "%10ld", (cur_infiniband_metrics.infiniband[i].port_rcv_data - prev_infiniband_metrics.infiniband[j].port_rcv_data) * 4 / 1024 / 1024 / refresh_second);
-                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 47, "%10ld", (cur_infiniband_metrics.infiniband[i].port_xmit_packets - prev_infiniband_metrics.infiniband[j].port_xmit_packets) / refresh_second);
-                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 59, "%10ld", (cur_infiniband_metrics.infiniband[i].port_xmit_data - prev_infiniband_metrics.infiniband[j].port_xmit_data) * 4 / 1024 / 1024 / refresh_second);
-                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 76, "%10ld", (cur_infiniband_metrics.infiniband[i].unicast_rcv_packets - prev_infiniband_metrics.infiniband[j].unicast_rcv_packets) / refresh_second);
-                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 93, "%10ld", (cur_infiniband_metrics.infiniband[i].unicast_xmit_packets - prev_infiniband_metrics.infiniband[j].unicast_xmit_packets) / refresh_second);
-                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 110, "%10ld", (cur_infiniband_metrics.infiniband[i].multicast_rcv_packets - prev_infiniband_metrics.infiniband[j].multicast_rcv_packets) / refresh_second);
+                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 2, "%-14.14s", cur_infiniband_metrics.infiniband[i].interface_name);
+                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 21, "%9ld", (cur_infiniband_metrics.infiniband[i].port_rcv_packets - prev_infiniband_metrics.infiniband[j].port_rcv_packets) / refresh_second);
+                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 33, "%9ld", (cur_infiniband_metrics.infiniband[i].port_rcv_data - prev_infiniband_metrics.infiniband[j].port_rcv_data) * 4 / 1024 / 1024 / refresh_second);
+                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 47, "%9ld", (cur_infiniband_metrics.infiniband[i].port_xmit_packets - prev_infiniband_metrics.infiniband[j].port_xmit_packets) / refresh_second);
+                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 59, "%9ld", (cur_infiniband_metrics.infiniband[i].port_xmit_data - prev_infiniband_metrics.infiniband[j].port_xmit_data) * 4 / 1024 / 1024 / refresh_second);
+                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 76, "%9ld", (cur_infiniband_metrics.infiniband[i].unicast_rcv_packets - prev_infiniband_metrics.infiniband[j].unicast_rcv_packets) / refresh_second);
+                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 93, "%9ld", (cur_infiniband_metrics.infiniband[i].unicast_xmit_packets - prev_infiniband_metrics.infiniband[j].unicast_xmit_packets) / refresh_second);
+                        mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 110, "%9ld", (cur_infiniband_metrics.infiniband[i].multicast_rcv_packets - prev_infiniband_metrics.infiniband[j].multicast_rcv_packets) / refresh_second);
                         mvwprintw(main_window, ret_get_infiniband_metrics + 8 + infiniband_name_found, 125, "%10ld", (cur_infiniband_metrics.infiniband[i].multicast_xmit_packets - prev_infiniband_metrics.infiniband[j].multicast_xmit_packets) / refresh_second);
 
                         break;

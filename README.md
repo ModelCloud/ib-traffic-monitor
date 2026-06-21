@@ -59,7 +59,7 @@ If `ib-traffic-monitor` cannot not detect any valid InfiniBand device, the progr
 
 ```
 $ ./ib-traffic-monitor -h
-InfiniBand Traffic Monitor - Version 1.4.1
+InfiniBand Traffic Monitor - Version 1.4.2
 usage: ib-traffic-monitor [-r|--refresh <second(s)>]
                           [-e|--ethernet]
                           [-m|--memory-lock]
@@ -94,6 +94,8 @@ usage: ib-traffic-monitor [-r|--refresh <second(s)>]
 [05/12/2026] 1.4.0 - add flag to enable memory lock
 
 [05/16/2026] 1.4.1 - fix stack overflow issue when device count is greater than INTERFACE_COUNT
+
+[06/22/2026] 1.4.2 - add padding before table delimiters
 ```
 
 ## Use Case

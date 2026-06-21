@@ -21,16 +21,16 @@
 void construct_window_layout(WINDOW *input_window, int interface_count) {
     /* layour constants */
     char *interface_status_banner = "Interface Status";
-    char *interface_status_layout = "Interface Name  |   LID   |   Link Layer   |      State      |  Physical State  |     Rate";
+    char *interface_status_layout = " Interface Name |   LID   |   Link Layer   |      State      |  Physical State  |     Rate";
 
     char *interface_io_banner = "Interface I/O (per second)";
-    char *interface_io_layout = "Interface Name  |  RX Packet  |   RX MB   |  TX Packet  |   TX MB   |  UC RX Packet  |  UC TX Packet  |  MC RX Packet  |  MC TX Packet";
+    char *interface_io_layout = " Interface Name |  RX Packet  |   RX MB   |  TX Packet  |   TX MB   |  UC RX Packet  |  UC TX Packet  |  MC RX Packet  |  MC TX Packet";
 
     char *interface_error_banner = "Interface Error (cumulative)";
-    char *interface_error_layout = "Interface Name  | Symbol |   RX   | RX Remote PHY | RX Switch Relay | RX Const. | TX Const. | Buffer Overrun | TX Discard | VL15 Dropped";
+    char *interface_error_layout = " Interface Name | Symbol |   RX   | RX Remote PHY | RX Switch Relay | RX Const. | TX Const. | Buffer Overrun | TX Discard | VL15 Dropped";
 
     char *interface_link_error_banner = "Interface Link Error (cumulative)";
-    char *interface_link_error_layout = "Interface Name  | Link Error Recovery | Local Link Integrity | Link Downed";
+    char *interface_link_error_layout = " Interface Name | Link Error Recovery | Local Link Integrity | Link Downed";
 
     /* move curser and print layout 
      * banner should have A_STANDOUT attribute; metric names should have A_BOLD attribute
@@ -54,7 +54,7 @@ void construct_window_layout(WINDOW *input_window, int interface_count) {
     mvwhline(input_window, 3 * interface_count + 15, 1, ACS_HLINE, COLS - 2);
 
     /* print footer */
-    mvwprintw(input_window, LINES - 1, 10, "press 'Q' to exit");
+    mvwprintw(input_window, LINES - 1, 10, " press 'Q' to exit ");
 
     /* refresh window */
     wrefresh(input_window);
